@@ -1,2 +1,12 @@
-<h1>Search#search</h1>
-<p>Find me in app/views/search/search.html.erb</p>
+<form action="/search/search" method="GET">
+  <input type="text" name="query" />
+  <select name="search_for">
+    <option value="content">Search by content</option>
+    <option value="title">Search by title</option>
+  </select>
+  <input type="submit" value="Search" />
+</form>
+
+<div>
+  <%= @results %>
+</div>
