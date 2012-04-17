@@ -1,4 +1,8 @@
 ISRproject::Application.routes.draw do
+  get "search/search"
+
+  get "search/view"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
