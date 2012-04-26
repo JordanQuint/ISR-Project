@@ -7,6 +7,34 @@
   <input type="submit" value="Search" />
 </form>
 
-<div>
-  <%= @results %>
+<div>  
+  <% if !params[:query].nil? && params[:query].size > 0 %>
+    <%= @results.size %> results for '<%= params[:query] %>':<br/>
+    <%= @time_taken %>
+
+    <table style="border: solid black 1px; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th style="border: solid black 1px; padding: 10px 5px 10px 5px;">
+            Relevancy (0 - 1):
+          </th>
+          <th style="border: solid black 1px; padding: 10px 5px 10px 5px;">
+            Context within Document:
+          </th>
+        </tr>
+      </thead>
+      <% @results.each { |result| %>
+        <tr>
+          <td style="border: solid black 1px; padding: 10px 5px 10px 5px;">
+            <%= result[:relevancy] %>
+          </td>
+          <td style="border: solid black 1px; padding: 10px 5px 10px 5px;">
+            <% result[:text].each { |t| %>
+              - <%= t %><br/>
+            <% } %>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+  <% end %>
 </div>
